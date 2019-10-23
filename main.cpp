@@ -7,7 +7,6 @@ int main()
 {
     int num;
     RElement r_element;
-    char answer;
 
     const unsigned char numbers[10][15] =
     {
@@ -22,26 +21,28 @@ int main()
         {1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1},  // 8
         {1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1}   // 9
     };
-
+//    unsigned counter = 0;
     while(1)
     {
-        cout << "Enter number: ";
+        srand(time(0));
+//        num = rand() % 10;
+        cout << "Enter num: " << endl;
         cin >> num;
+//        cout << "num = " << num << endl;
 
         r_element.setInput(numbers[num]);
 
         if(r_element.getResult())
         {
-            cout << "It's 9" << endl;
-            cin >> answer;
-        } else {
-            cout << "It is not 9" << endl;
-            cin >> answer;
+            cout << "yes" << endl;
+            if(num != 9) r_element.incorrentNotNine();
+        } else
+        {
+            cout << "no" << endl;
+            if(num == 9) r_element.incorrectNine();
         }
-
-        if(answer == 'n' && num == 9) r_element.incorrectNine();
-        else if(answer == 'n' && num != 9) r_element.incorrentNotNine();
+//        cout << ++counter << endl;
     }
-
+    // -1 1 -2 4 0 3 -1 -1 -2 -5 0 -1 1 1 -2
     return 0;
 }
