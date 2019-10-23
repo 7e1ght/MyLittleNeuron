@@ -12,9 +12,16 @@ void RElement::writeCoefficients()
     coefficientsFile.close();
 }
 
-unsigned char RElement::getResult()
+bool RElement::getResult()
 {
+    int sum = 0;
 
+    for(int i = 0; i < ::signalsNum; i++)
+        sum += input[i] * coefficients[i];
+
+    // Функция активации - единичная ступенька
+    if(sum < 0) return false;
+    else return true;
 }
 
 void RElement::incorrentNotNine()
@@ -41,7 +48,7 @@ void RElement::incorrectNine()
     writeCoefficients();
 }
 
-void RElement::setInput(unsigned char* signals)
+void RElement::setInput(const unsigned char signals[15])
 {
     for(int i = 0; i < ::signalsNum; i++)
         input[i] = signals[i];
@@ -53,11 +60,15 @@ RElement::RElement()
 
     if(coefficientsFile.is_open())
     {
-        for (int i = 0; i < ::signalsNum; i++) {
+        for (int i = 0; i < ::signalsNum; i++)
+        {
             int c;
             coefficientsFile >> c;
             coefficients[i] = c;
         }
+    } else {
+        for (int i = 0; i < ::signalsNum; i++)
+            coefficients[i] = 0;
     }
 
     coefficientsFile.close();

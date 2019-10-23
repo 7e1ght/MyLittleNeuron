@@ -18,8 +18,8 @@ private:
 
     void writeCoefficients();
 public:
-    void setInput(unsigned char* signals);
-    unsigned char getResult();
+    void setInput(const unsigned char signals[15]);
+    bool getResult();
 
     // Обучение
     void incorrectNine();       // Ввод девять; вывод, что не девять
