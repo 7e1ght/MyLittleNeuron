@@ -1,7 +1,7 @@
 #ifndef RELEMENT_H
 #define RELEMENT_H
 
-#include <fstream>
+#include <iostream>
 
 namespace
 {
@@ -12,8 +12,7 @@ namespace
 class RElement
 {
 private:
-    std::fstream coefficientsFile;
-    int coefficients[::signalsNum];
+    int coefficients[::signalsNum] = {};
     unsigned char input[::signalsNum]; // Входные сигналы
 
     void writeCoefficients();

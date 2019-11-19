@@ -1,5 +1,6 @@
 #include <iostream>
 #include <relement.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -21,7 +22,7 @@ int main()
         {1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1},  // 8
         {1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1}   // 9
     };
-//    unsigned counter = 0;
+    unsigned counter = 0;
     while(1)
     {
         srand(time(0));
@@ -35,13 +36,15 @@ int main()
         if(r_element.getResult())
         {
             cout << "yes" << endl;
-            if(num != 9) r_element.incorrentNotNine();
+//            if(num != 9) r_element.incorrentNotNine();
         } else
         {
             cout << "no" << endl;
-            if(num == 9) r_element.incorrectNine();
+//            if(num == 9) r_element.incorrectNine();
         }
-//        cout << ++counter << endl;
+        cout << ++counter << endl;
+
+//        usleep(600000);
     }
     // -1 1 -2 4 0 3 -1 -1 -2 -5 0 -1 1 1 -2
     return 0;
